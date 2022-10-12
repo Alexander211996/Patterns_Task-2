@@ -45,11 +45,11 @@ class AuthTest {
     @Test
     @DisplayName("Should get error message if login with blocked registered user")
     void shouldGetErrorIfBlockedUser() {
-        var blockedUser = getUser("blocked");
+        var blockedUser = getRegisteredUser("blocked");
         $("[data-test-id='login'] .input__control").setValue(blockedUser.getLogin());
         $("[data-test-id='password'] .input__control").setValue(blockedUser.getPassword());
         $("[data-test-id='action-login']").click();
-        $("[data-test-id='error-notification']").shouldHave(text("Неверно указан логин или пароль"));
+        $("[data-test-id='error-notification']").shouldHave(text("Пользователь заблокирован"));
     }
 
     @Test
